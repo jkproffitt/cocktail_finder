@@ -1,2 +1,2 @@
 # cocktail_finder
-Project 2
+Project 2 - Libations 
