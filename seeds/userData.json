@@ -3,18 +3,23 @@
     "username": "Sal",
     "email": "sal@hotmail.com",
     "password": "password12345",
-    "birthDate": "10/25/1990"
+    "birthDate": "10/25/1990",
+    "favCocktail": ["margarita", "tequila", "test"]
   },
   {
     "username": "Lernantino",
     "email": "lernantino@gmail.com",
     "password": "password12345",
-    "birthDate": "10/25/1990"
+    "birthDate": "10/25/1990",
+    "favCocktail": ["margarita", "tequila", "test"]
+
   },
   {
     "username": "Amiko",
     "email": "amiko2k20@aol.com",
     "password": "password12345",
-    "birthDate": "10/25/1990"
+    "birthDate": "10/25/1990",
+    "favCocktail": []
+
   }
 ]

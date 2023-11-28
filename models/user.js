@@ -38,6 +38,10 @@ User.init(
     birthDate: {
         type: DataTypes.DATE,
         allowNull: false, 
+    },
+    favCocktail: {
+        type: DataTypes.ARRAY,
+        allowNull: true
     }
     },
   },
