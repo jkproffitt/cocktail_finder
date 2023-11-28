@@ -1,8 +1,11 @@
 [
-    {
-        "cocktailName": "tequila"
-    },
-    {
-        "cocktailName": "marg"
-    }
+  {
+    "cocktail_name": "Margarita"
+  },
+  {
+    "cocktail_name": "Tom Collins"
+  },
+  {
+    "cocktail_name": "Water"
+  }
 ]
