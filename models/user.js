@@ -35,10 +35,14 @@ User.init(
       validate: {
         len: [8],
       },
-    birthDate: {
+      birthDate: {
         type: DataTypes.DATE,
-        allowNull: false, 
-    }
+        allowNull: false,
+      },
+      favCocktail: {
+        type: DataTypes.ARRAY,
+        allowNull: true,
+      },
     },
   },
   {
