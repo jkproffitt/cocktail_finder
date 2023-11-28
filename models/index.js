@@ -1,17 +1,18 @@
 const user = require('./User');
 const cocktail = require('./cocktail');
-const userFavoritedCocktail = require('./userFavoritedCocktail');
+const favoriteCocktail = require('./favoriteCocktail');
 
-user.hasMany(userFavoritedCocktail, {
+user.hasMany(favoriteCocktail, {
   foreignKey: 'user_id',
   onDelete: 'CASCADE',
 });
 
-userFavoritedCocktail.belongsTo(user, {
+favoriteCocktail.belongsTo(user, {
   foreignKey: 'user_id',
 });
 
-userFavoritedCocktail.belongsTo(cocktail, {
+//assoications
+favoriteCocktail.belongsTo(cocktail, {
   foreignKey: 'cocktail_id',
 });
 
@@ -20,9 +21,4 @@ userFavoritedCocktail.belongsTo(cocktail, {
 //   onDelete: 'CASCADE',
 // });
 
-UserFavoritedCocktail.associate = (models) => {
-    models.UserFavoritedCocktail.belongsTo(models.User, { foreignKey: 'user_id' });
-    models.UserFavoritedCocktail.belongsTo(models.Cocktail, { foreignKey: 'cocktailName' });
-  },
-  
-module.exports = { user, cocktail, userFavoritedCocktail };
+module.exports = { user, cocktail, userFavoritedCocktail: favoriteCocktail };
