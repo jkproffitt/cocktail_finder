@@ -1,6 +1,6 @@
 const user = require('./User');
-const cocktail = require('./cocktail');
-const favoriteCocktail = require('./favoriteCocktail');
+const cocktail = require('./Cocktail');
+const favoriteCocktail = require('./FavoriteCocktail');
 
 user.hasMany(favoriteCocktail, {
   foreignKey: 'user_id',
@@ -21,4 +21,4 @@ favoriteCocktail.belongsTo(cocktail, {
 //   onDelete: 'CASCADE',
 // });
 
-module.exports = { user, cocktail, userFavoritedCocktail: favoriteCocktail };
+module.exports = { user, cocktail, favoriteCocktail };

@@ -1,22 +1,15 @@
 const sequelize = require('../config/connection');
-const { User, Cocktail, favoriteCocktail } = require('../models');
+const userSeedData = require('./userData');
+const cocktailSeedData = require('./cocktailData');
 
-const userSeedData = require('./userData.json');
-const cocktailSeedData = require('./cocktailData.json');
-const favoriteSeedData = require('./favoriteCocktailData.json');
-
-const seedDatabase = async () => {
+const seedAll = async () => {
   await sequelize.sync({ force: true });
 
-  const users = await User.bulkCreate(userSeedData);
+  await cocktailSeedData();
 
-  for (const { id } of users) {
-    const newFavorite = await favoriteCocktail.create({
-      cocktail_id: id,
-    });
-  }
+  await userSeedData();
 
   process.exit(0);
 };
 
-seedDatabase();
+seedAll();
