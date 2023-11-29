@@ -1,13 +1,13 @@
 const sequelize = require('../config/connection');
 const userSeedData = require('./userData');
-const cocktailSeedData = require('./cocktailData');
+const seedCocktail = require('./cocktailData');
 
 const seedAll = async () => {
   await sequelize.sync({ force: true });
 
-  await cocktailSeedData();
+  await seedCocktail();
 
-  await userSeedData();
+  // await userSeedData();
 
   process.exit(0);
 };
