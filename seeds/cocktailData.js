@@ -1,4 +1,4 @@
-const { Cocktail } = require('../models');
+const { cocktail } = require('../models');
 
 const cocktailData = [
   {
@@ -12,6 +12,6 @@ const cocktailData = [
   },
 ];
 
-const seedCocktail = () => Cocktail.bulkCreate(cocktailData);
+const seedCocktail = () => cocktail.bulkCreate(cocktailData);
 
 module.exports = seedCocktail;
