@@ -7,7 +7,7 @@ const seedAll = async () => {
 
   await seedCocktail();
 
-  // await userSeedData();
+  await userSeedData();
 
   process.exit(0);
 };
