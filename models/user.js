@@ -13,6 +13,8 @@ User.init(
     },
     username: {
       type: DataTypes.STRING,
+      // prevents duplicate email addresses in DB
+      unique: true,
       // prevents null values
       allowNull: false,
       // will only allow alphanumeric characters
@@ -23,7 +25,9 @@ User.init(
     email: {
       type: DataTypes.STRING,
       allowNull: false,
+      // prevents duplicates in DB
       unique: true,
+      // checks for email format (foo@bar.com)
       validate: {
         isEmail: true,
       },

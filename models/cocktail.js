@@ -10,7 +10,7 @@ Cocktail.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    cocktailName: {
+    cocktail_name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
