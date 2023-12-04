@@ -1,47 +1,46 @@
-
+const { user, cocktail, favoriteCocktail } = require('../../models');
 const router = require('express').Router();
 
-//enter all js files here
-//search cocktail by name
 const getDrinkByName = async (name) => {
-  const response = await fetch(
-    `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${name}`
-  );
+  const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${name}`);
   const data = await response.json();
   return data.drinks;
-};
+}
 
-getDrinkByName('margarita').then((data) => console.log(data));
-//look up cocktail by ID
-const getDrinkById = async (id) => {
-  const response = await fetch(
-    `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`
-  );
-  const data = await response.json();
-  return data.drinks;
-};
-
-getDrinkById('11007').then((data) => console.log(data));
-
-//search for ingredient by name
-const getIngredientByName = async (name) => {
-  const response = await fetch(
-    `https://www.thecocktaildb.com/api/json/v1/1/search.php?i=${name}`
-  );
-  const data = await response.json();
-  return data.ingredients;
-};
-
-getIngredientByName('lemon').then((data) => console.log(data));
-
-//get random cocktail
 const getRandomDrink = async () => {
-  const response = await fetch(
-    'https://www.thecocktaildb.com/api/json/v1/1/random.php'
-  );
+  const response = await fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php');
   const data = await response.json();
-  return data.drinks;
-};
+  return data.drinks[0];
+}
+
+router.get('/drink/:name', async (req, res) => {
+  const drinkName = req.params.name;
+
+  try {
+    const drinks = await getDrinkByName(drinkName);
+
+    if (!drinks || drinks.length === 0) {
+      return res.status(404).json({ error: 'Drink not found' });
+    }
+
+    res.json({ drink: drinks[0].strDrink });
+  } catch (error) {
+    console.error('Error getting drink by name:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+router.get('/random-drink', async (req, res) => {
+  const drinkName = req.params.name;
+
+  try {
+    const randomDrink = await getRandomDrink(drinkName);
+    res.json({ drink: randomDrink.strDrink });
+  } catch (error) {
+    console.error('Error getting random drink:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
 
 getRandomDrink().then((data) => console.log(data));
 
