@@ -28,3 +28,8 @@ border: none;
 border-radius: .3rem;
 color: black;
 }
+
+img{
+  height:20rem;
+  width:20rem;
+}
