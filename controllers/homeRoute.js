@@ -2,17 +2,22 @@ const router = require('express').Router();
 const { User, cocktail, favoriteCocktail } = require('../models');
 const auth = require('../utils/auth');
 
+console.log('homeRoute');
+
 router.get('/', async (req, res) => {
   try {
     const drinks = await favoriteCocktail.findAll({
       include: [{ model: cocktail }],
     });
+    // console.log(drinks);
     const drink = drinks.map((cocktail) => cocktail.get({ plain: true }));
+    console.log(drink);
     //  const con = console.log(posts)
     res.render('home', {
       drink,
       logged_in: req.session.logged_in,
     });
+    console.log(req.session.logged_in);
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -22,6 +27,7 @@ router.get('/', async (req, res) => {
 router.get('/login', (req, res) => {
   // If a session exists, redirect the request to the homepage
   if (req.session.logged_in) {
+    console.log('user logged in ' + req.session);
     res.redirect('/');
     return;
   }
@@ -34,34 +40,6 @@ router.get('/signup', (req, res) => {
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
-  }
-});
-
-//get the specific post with all of its comments.
-router.get('/post/:id', async (req, res) => {
-  try {
-    const post = await Post.findByPk(req.params.id, {
-      include: [
-        {
-          model: User,
-          include: [
-            {
-              model: User,
-              attributes: ['user_name'],
-            },
-          ],
-        },
-      ],
-    });
-    const singlePost = post.get({ plain: true });
-
-    res.render('post', {
-      singlePost,
-      logged_in: req.session.logged_in,
-    });
-  } catch (err) {
-    console.error(err);
-    res.status(400).json({ error: err, message: 'Something went wrong.' });
   }
 });
 

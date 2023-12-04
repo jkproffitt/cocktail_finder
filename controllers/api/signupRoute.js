@@ -1,10 +1,10 @@
 const router = require('express').Router();
 const { response } = require('express');
-const { User } = require('../../models');
+const { user } = require('../../models');
 
 router.post('/', async (req, res) => {
-  const findUser = await User.findOne({
-    where: { user_name: req.body.user_name },
+  const findUser = await user.findOne({
+    where: { username: req.body.user_name },
   });
 
   if (findUser) {
@@ -16,15 +16,17 @@ router.post('/', async (req, res) => {
 
   // If there is no match with the username, send a incorrect message to the user and have them retry
   try {
-    const user = await User.create({
-      user_name: req.body.user_name,
+    const newUser = await user.create({
+      username: req.body.user_name,
       password: req.body.password,
+      email: req.body.email,
+      dob: req.body.dob,
     });
 
     req.session.save(() => {
-      req.session.user_id = user.id;
+      req.session.user_id = newUser.id;
       req.session.logged_in = true;
-      res.status(200).json(user);
+      res.status(200).json(newUser);
     });
   } catch (error) {
     res.status(500).json(error);

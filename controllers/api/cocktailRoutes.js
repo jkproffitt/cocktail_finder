@@ -1,3 +1,5 @@
+const router = require('express').Router();
+
 //enter all js files here
 //search cocktail by name
 const getDrinkByName = async (name) => {
@@ -41,3 +43,5 @@ const getRandomDrink = async () => {
 };
 
 getRandomDrink().then((data) => console.log(data));
+
+module.exports = router;
