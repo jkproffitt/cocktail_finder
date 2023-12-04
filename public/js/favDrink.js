@@ -4,13 +4,14 @@ document.addEventListener('DOMContentLoaded', function () {
       e.preventDefault();
   
       // Get the value from the input field
-      const cocktailId = document.getElementById('cocktailId').value;
-  
-      // Clear the input field
-      document.getElementById('cocktailId').value = '';
-  
+      const cocktailId = document.getElementById('drinkName').value;
+        console.log(cocktailId);
+    //   // Clear the input field
+    //   document.getElementById('cocktailId').value = '';
+    
       try {
         // Send a POST request to the server endpoint with the cocktailId
+        console.error("hello world");
         const response = await fetch('/api/favDrink', {
           method: 'POST',
           headers: {

@@ -21,6 +21,8 @@ const getUserFavoriteDrink = async (userId) => {
 router.get('/', async (req, res) => {
   try {
     const userId = req.session.user_id;
+    console.error("i am hungry" + userId);
+    console.log("i am hungry" + userId);
 
     const favoriteDrinks = await getUserFavoriteDrink(userId);
 
