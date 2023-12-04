@@ -1,4 +1,4 @@
-// favDrink.js
+// favDrink.js - temporary file for now
 document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('addFavoriteDrinkForm').addEventListener('submit', async function (e) {
       e.preventDefault();
@@ -34,3 +34,4 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
   
+

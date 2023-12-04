@@ -42,7 +42,5 @@ router.get('/random-drink', async (req, res) => {
   }
 });
 
-getRandomDrink().then((data) => console.log(data));
-
 module.exports = router;
 
