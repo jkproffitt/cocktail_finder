@@ -1,9 +1,9 @@
 const router = require('express').Router();
 const userRoutes = require('./userRoutes');
-const cocktailRoutes = require('./cocktailRoutes');
+const projectRoutes = require('./cocktailRoutes');
 
 router.use('/users', userRoutes);
-router.use('/projects', cocktailRoutes);
+router.use('/projects', projectRoutes);
 
 const loginRoute = require('./loginRoute');
 const logoutRoute = require('./logoutRoute');
