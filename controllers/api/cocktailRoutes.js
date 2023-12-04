@@ -1,3 +1,4 @@
+
 const { user, cocktail, favoriteCocktail } = require('../../models');
 const router = require('express').Router();
 
@@ -43,4 +44,3 @@ router.get('/random-drink', async (req, res) => {
 });
 
 module.exports = router;
-

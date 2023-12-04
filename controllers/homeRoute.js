@@ -42,5 +42,4 @@ router.get('/signup', (req, res) => {
     res.status(500).json(err);
   }
 });
-
 module.exports = router;

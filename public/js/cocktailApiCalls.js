@@ -1,4 +1,9 @@
 //enter all js files here
+
+const imgEl = document.getElementById('thumbnailImg');
+const drinkEl = document.getElementById('cocktail-name');
+const drinkImg = document.getElementById('drinkImg');
+
 //search cocktail by name
 const getDrinkByName = async (name) => {
   const response = await fetch(
@@ -8,7 +13,11 @@ const getDrinkByName = async (name) => {
   return data.drinks;
 };
 
-getDrinkByName('margarita').then((data) => console.log(data));
+getDrinkByName(drinkEl.innerHTML).then((data) => {
+  console.log(data);
+  drinkImg.src = data[0].strDrinkThumb;
+});
+
 //look up cocktail by ID
 const getDrinkById = async (id) => {
   const response = await fetch(
@@ -18,7 +27,7 @@ const getDrinkById = async (id) => {
   return data.drinks;
 };
 
-getDrinkById('11007').then((data) => console.log(data));
+// getDrinkById('11007').then((data) => console.log(data));
 
 //search for ingredient by name
 const getIngredientByName = async (name) => {
@@ -29,7 +38,7 @@ const getIngredientByName = async (name) => {
   return data.ingredients;
 };
 
-getIngredientByName('lemon').then((data) => console.log(data));
+// getIngredientByName('lemon').then((data) => console.log(data));
 
 //get random cocktail
 const getRandomDrink = async () => {
@@ -40,4 +49,8 @@ const getRandomDrink = async () => {
   return data.drinks;
 };
 
-getRandomDrink().then((data) => console.log(data));
+getRandomDrink().then((data) => {
+  console.log(data);
+  console.log(data[0].strDrinkThumb);
+  imgEl.src = data[0].strDrinkThumb;
+});
