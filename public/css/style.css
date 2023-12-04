@@ -19,6 +19,9 @@ nav ul a{
   color: inherit;
 }
 
+a{
+  color:black;
+}
 button {
 background-color: var(--tealOpaque);
 border: none;
