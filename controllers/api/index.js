@@ -5,4 +5,12 @@ const projectRoutes = require('./cocktailRoutes');
 router.use('/users', userRoutes);
 router.use('/projects', projectRoutes);
 
+const loginRoute = require('./loginRoute');
+const logoutRoute = require('./logoutRoute');
+const signupRoute = require('./signupRoute');
+
+router.use('/login', loginRoute);
+router.use('/logout', logoutRoute);
+router.use('/signup', signupRoute);
+
 module.exports = router;
