@@ -14,8 +14,6 @@ const newExploreFormHandler = async (event) => {
 
   const drinkName = document.querySelector('#search-drink').value.trim();
 
-  console.log('out ' + drinkName);
-
   if (drinkName == '') {
     $('#search-drink').attr(
       'style',
@@ -25,11 +23,21 @@ const newExploreFormHandler = async (event) => {
   }
 
   if (drinkName) {
-    console.log('in if' + drinkName);
     const data = await getDrinkByName(drinkName);
-    console.log(data);
+    buildCocktailPage(data[0]);
   }
 };
+
+function buildCocktailPage(data) {
+  console.log('This is the builder function, here is the related data: ', data);
+  const cpTitle = document.getElementById('title');
+  const cpDrinkType = document.getElementById('drinkType');
+  const cpIngredients = document.getElementById('ingredients');
+  const cpInstructions = document.getElementById('instructions');
+  const cpGlass = document.getElementById('glassware');
+
+  cpDrinkType.src = data.strDrinkThumb;
+}
 //event listener for homepage
 document
   .querySelector('.discover-form')
@@ -48,7 +56,6 @@ if (!drinkEl) {
   console.log('no favorite drinks');
 } else {
   getDrinkByName(drinkEl.innerHTML).then((data) => {
-    console.log(data);
     drinkImg.src = data[0].strDrinkThumb;
   });
 }
@@ -85,8 +92,6 @@ const getRandomDrink = async () => {
 };
 
 getRandomDrink().then((data) => {
-  console.log(data);
-  console.log(data[0].strDrinkThumb);
   imgEl.src = data[0].strDrinkThumb;
 });
 
