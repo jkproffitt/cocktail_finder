@@ -48,7 +48,15 @@ function buildCocktailPage(data) {
   cpDrinkType.src = data.strDrinkThumb;
   cpTitle.textContent = data.strDrink;
   cpGlass.textContent = data.strGlass;
-  cpIngredients.textContent = ingredientList.json();
+
+  for (key in ingredientList) {
+    var entry = document.createElement('li');
+    entry.appendChild(document.createTextNode(ingredientList[key]));
+    cpIngredients.appendChild(entry);
+    console.log(key + ' ' + ingredientList[key]);
+  }
+
+  // cpIngredients.textContent = ingredientList;
   cpInstructions.textContent = data.strInstructions;
 }
 //event listener for homepage
