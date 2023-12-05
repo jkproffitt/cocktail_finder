@@ -6,7 +6,7 @@
         <li>
           {{#if logged_in}}
           <button>
-            <a id="logout">
+            <a id="logout" href="logout">
             Logout
           </a></button>
           {{else}}
@@ -21,11 +21,6 @@
 </nav>
 <div class="row align-center mb-5">
   <div class="col-md-6">
-    {{!-- <form id="addFavoriteDrinkForm">
-        <label for="drinkName">Add Favorite Drink:</label>
-        <input type="text" id="drinkName" name="drinkName" required>
-        <button type="submit">Add</button>
-    </form> --}}
   </div>
   </nav>
 </div>
@@ -33,10 +28,15 @@
   <span>Discover Cocktails
     <p> Explore a variety of cocktails and reciepes and create your own collection</p>
   </span>
-  <form id="search-for-drink" class="discover-form">
+  
+  <form id="search-for-drink" class="form discover-form">
+    <div class="form-group">
+     <label for="search-drink"></label>
     <input type="text" class="discover-form-search" id="search-drink" placeholder="Search for Drinks">
-    <button class="explore-button"type="submit">Start Exploring</button>
+    </div>
+    <button class="explore-button" type="submit" id="drink-by-name-btn" >Start Exploring</button>
   </form>
+
 </section>
 <section class="random-drink"> Drink of the Day 
 <img id="thumbnailImg" src="">
