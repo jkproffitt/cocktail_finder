@@ -12,6 +12,7 @@ const getDrinkByName = async (name) => {
   const data = await response.json();
   return data.drinks;
 };
+
 if (!drinkEl) {
   console.log('no favorite drinks');
 } else {
@@ -57,3 +58,37 @@ getRandomDrink().then((data) => {
   console.log(data[0].strDrinkThumb);
   imgEl.src = data[0].strDrinkThumb;
 });
+
+const searchForm = document.getElementById('searchForm');
+if (searchForm) {
+  searchForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const searchInput = document.getElementById('searchCocktail');
+    const searchTerm = searchInput.value.trim();
+    
+    if (searchTerm) {
+      // Redirect to cocktailDisplay page with the searched cocktail name
+      window.location.href = `/cocktailDisplay?name=${encodeURIComponent(searchTerm)}`;
+    }
+  });
+}
+
+const displayCocktailDetails = async (cocktailName) => {
+  const drinks = await getDrinkByName(cocktailName);
+  if (drinks && drinks.length > 0) {
+    const cocktail = drinks[0];
+    // Assuming ingredients are stored in strIngredient1, strIngredient2, ...
+    const ingredients = [];
+    for (let i = 1; i <= 15; i++) {
+      const ingredient = cocktail[`strIngredient${i}`];
+      if (ingredient) {
+        ingredients.push(ingredient);
+      } else {
+        break;
+      }
+    }
+
+    // Redirect to cocktailDisplay page with details
+    window.location.href = `/cocktailDisplay?name=${encodeURIComponent(cocktailName)}&ingredients=${encodeURIComponent(JSON.stringify(ingredients))}&instructions=${encodeURIComponent(cocktail.strInstructions)}&image=${encodeURIComponent(cocktail.strDrinkThumb)}`;
+  }
+};

@@ -49,7 +49,9 @@
   <div class ="col s12 m6 lg6">
     <div class="card">
       <img class="card-content" id="drinkImg" src="">
-      <span class="card-title" id="cocktail-name">{{drink.cocktail.cocktail_name}}
+      <a href="#" onclick="displayCocktailDetails('{{drink.cocktail.cocktail_name}}');">
+        <span class="card-title" id="cocktail-name">{{drink.cocktail.cocktail_name}}
+      </a>
       </span>
       <div class="card-action">
         <button> Unfavorite</button>
