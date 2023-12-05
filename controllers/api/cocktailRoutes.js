@@ -1,4 +1,3 @@
-
 const { user, cocktail, favoriteCocktail } = require('../../models');
 const router = require('express').Router();
 
