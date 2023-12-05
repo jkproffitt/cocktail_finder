@@ -12,11 +12,14 @@ const getDrinkByName = async (name) => {
   const data = await response.json();
   return data.drinks;
 };
-
-getDrinkByName(drinkEl.innerHTML).then((data) => {
-  console.log(data);
-  drinkImg.src = data[0].strDrinkThumb;
-});
+if (!drinkEl) {
+  console.log('no favorite drinks');
+} else {
+  getDrinkByName(drinkEl.innerHTML).then((data) => {
+    console.log(data);
+    drinkImg.src = data[0].strDrinkThumb;
+  });
+}
 
 //look up cocktail by ID
 const getDrinkById = async (id) => {

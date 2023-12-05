@@ -1,5 +1,5 @@
 <div class="navbar-fixed">
-  <nav style="background: none; padding: 0 1rem">
+  <nav class="nav">
     <img src="/imgs/navheader.png" alt="Libation Logo" style="height: fit-content;width: 10rem;">
     <div class="nav-wrapper">
       <ul id="nav-mobile" class="right hide-on-med-and-down">
@@ -21,21 +21,30 @@
 </nav>
 <div class="row align-center mb-5">
   <div class="col-md-6">
-    <form id="addFavoriteDrinkForm">
+    {{!-- <form id="addFavoriteDrinkForm">
         <label for="drinkName">Add Favorite Drink:</label>
         <input type="text" id="drinkName" name="drinkName" required>
         <button type="submit">Add</button>
-      </form>
-  </div>
-  <div class="col-md-6">
-    {{!-- <h3><a href="mailto:test@gmail.com">test@gmail.com</a></h3> --}}
+    </form> --}}
   </div>
   </nav>
 </div>
-<section>
+<section id="discover-drinks" class="discover">
+  <span>Discover Cocktails
+    <p> Explore a variety of cocktails and reciepes and create your own collection</p>
+  </span>
+  <form id="search-for-drink" class="discover-form">
+    <input type="text" id="search-drink" placeholder="Search for Drinks">
+    <button class="explore-button"type="submit">Start Exploring</button>
+  </form>
+</section>
+<section style="display: flex;
+    flex-wrap: wrap;
+    justify-content: center;">
 <img id="thumbnailImg" src="">
 </section>
-<section >
+<section class="favorited-drinks-section" >
+  <span style="font-size: 2rem; display: flex;align-items: center;flex-wrap: wrap;justify-content: center;">Favorited Drinks</span>
 {{!-- For each drink in the array of drink objects, the following <div> will be rendered. --}}
 {{#each drink as |drink|}}
 <div class="row">

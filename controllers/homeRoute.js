@@ -9,7 +9,7 @@ router.get('/', async (req, res) => {
     const drinks = await favoriteCocktail.findAll({
       include: [{ model: cocktail }],
     });
-    // console.log(drinks);
+    console.log(drinks);
     const drink = drinks.map((cocktail) => cocktail.get({ plain: true }));
     console.log(drink);
     //  const con = console.log(posts)
