@@ -1,16 +1,9 @@
-<div>
-  <div class="container" style="
-    display: flex; align-items: center;flex-wrap: nowrap; flex-direction: column;">
-    <img src="imgs/nobg.png" alt="Libation Logo" style="height: fit-content;width: 30rem;">
+  <div class="container libation-login">
+    <img src="imgs/nobg.png" alt="Libation Logo">
     <div class="column is-4 is-offset-4">
     <div class="box">
     <form class="col s12">
-      <div class="row" style="display: flex;
-    flex-wrap: wrap;
-    align-content: center;
-    align-items: center;
-    justify-content: space-evenly;
-    flex-direction: row;">
+      <div class="row" class="login-form">
       <div class="input-field col s6">
         <input class="form-input" type="text" id="user-name" placeholder="Username"/>
       </div>
@@ -19,10 +12,9 @@
       </div>
     </form>
     </div>
-    <div class="row is-4 is-offset-4"
-      style="display: flex; justify-content: space-around;flex-wrap: wrap;flex-direction: column;align-items: center;">
+    <div class="row is-4 is-offset-4 login-div">
       <button type="submit" class="button" id="login-btn">Login <i class="fa fa-sign-in" aria-hidden="true"></i></button>
-      <span style="margin:0.3rem;"> Not a user?
+      <span> Not a user?
         <button id="submit-btn">
           <a href="/signup">Signup</a>
         </button>

@@ -34,17 +34,15 @@
     <p> Explore a variety of cocktails and reciepes and create your own collection</p>
   </span>
   <form id="search-for-drink" class="discover-form">
-    <input type="text" id="search-drink" placeholder="Search for Drinks">
+    <input type="text" class="discover-form-search" id="search-drink" placeholder="Search for Drinks">
     <button class="explore-button"type="submit">Start Exploring</button>
   </form>
 </section>
-<section style="display: flex;
-    flex-wrap: wrap;
-    justify-content: center;">
+<section class="random-drink"> Drink of the Day 
 <img id="thumbnailImg" src="">
 </section>
-<section class="favorited-drinks-section" >
-  <span style="font-size: 2rem; display: flex;align-items: center;flex-wrap: wrap;justify-content: center;">Favorited Drinks</span>
+<section class="favorited-drinks" >
+  <span>Favorited Drinks</span>
 {{!-- For each drink in the array of drink objects, the following <div> will be rendered. --}}
 {{#each drink as |drink|}}
 <div class="row">

@@ -16,14 +16,14 @@
   background: white;
   padding: 0 1rem;
 }
-h1 {
+h1{
   font-size: 2em;
   margin: 0.67em 0;
 }
 p{
   font-size: 1rem;
 }
-nav {
+nav{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -36,7 +36,7 @@ nav ul a{
 a{
   color:black;
 }
-button {
+button{
 background-color: var(--tealOpaque);
 border: none;
 border-radius: .3rem;
@@ -46,15 +46,20 @@ img{
   height:20rem;
   width:20rem;
 }
-
-section {
+section{
   margin: .5rem;
 }
-
-.favorited-drinks-section{
+.favorited-drinks{
   background-color: var(--tealOpaque);
 }
-.discover {
+.favorited-drinks span{
+  font-size: 2rem;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.discover{
   font-size: 2rem;
   display: flex;
   align-items: center;
@@ -68,12 +73,59 @@ section {
   align-items: center;
   justify-items: center;
 }
-.discover-form, input{
-width: 50rem;
+.discover-form-search{
+  width: 50rem !important;
 }
-.explore-button {
+.explore-button{
   background-color: var(--black);
   color: var(--white);
   height: 2rem;
   font-size: 1rem;
+}
+.random-drink{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.libation-login{
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  margin-top: 6rem;
+}
+.libation-login img{
+  height: fit-content;
+  width: 30rem;
+}
+.login-form{ 
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: row;
+}
+.login-div {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+}
+.login-div span { 
+  margin-top: 1rem;
+}
+
+.sign-up{
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  margin-top: 6rem;
+}
+
+.sign-up img {
+  height: fit-content;
+  width: 30rem;
 }
