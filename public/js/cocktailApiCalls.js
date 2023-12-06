@@ -1,7 +1,7 @@
 const imgEl = document.getElementById('thumbnailImg');
 const drinkEl = document.getElementById('cocktail-name');
 const drinkImg = document.getElementById('drinkImg');
-
+const discoverCocktailRow = document.getElementById('discover-cocktail-row');
 //setting the search up for homepage
 const discoverForm = document.getElementById('search-for-drink');
 const searchByName = document.getElementById('drink-by-name-btn');
@@ -68,6 +68,7 @@ document
 
 //search cocktail by name
 const getDrinkByName = async (name) => {
+  discoverCocktailRow.hidden = false;
   const response = await fetch(
     `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${name}`
   );
