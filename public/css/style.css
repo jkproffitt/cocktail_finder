@@ -134,3 +134,7 @@ section{
   height: fit-content;
   width: 30rem;
 }
+
+.card-width{
+  width: 69rem !important;
+}
