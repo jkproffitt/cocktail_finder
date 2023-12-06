@@ -138,3 +138,10 @@ section{
 .card-width{
   width: 69rem !important;
 }
+.title{
+  background: var(--black)
+}
+
+.details{
+  padding-left: .5rem !important;
+}
