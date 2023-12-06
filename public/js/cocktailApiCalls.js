@@ -16,7 +16,15 @@ const newExploreFormHandler = async (event) => {
       'style',
       'background-color: rgb(255, 245, 235); border-color: red; '
     );
-    $('#search-drink').attr('placeholder', ' Please enter a drink name');
+    $('#search-drink').attr('placeholder', ' Please enter a drink name, like "Tequila Sunrise');
+  } else {
+    const data = await getDrinkByName(drinkName);
+
+    if (data && data.length > 0) {
+      buildCocktailPage(data[0]);
+    } else {
+      alert('This drink is not available. Please try with a different drink.');
+    }
   }
 
   if (drinkName) {
