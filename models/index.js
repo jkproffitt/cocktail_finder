@@ -1,6 +1,6 @@
-const User = require('./User');
-const Cocktail = require('./Cocktail');
-const FavoriteCocktail = require('./FavoriteCocktail');
+const User = require('./user');
+const Cocktail = require('./cocktail');
+const FavoriteCocktail = require('./favoriteCocktail');
 
 User.hasMany(FavoriteCocktail, {
   foreignKey: 'user_id',
