@@ -32,4 +32,5 @@ This is the github repo location: [cocktail finder](https://github.com/peterkim1
 
 This following is a link to the deployed application:[Deployed Cocktail Finder project](https://)
 
-
+## Contributors 
+Jessica, Peter, and Sel
