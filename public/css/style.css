@@ -135,8 +135,19 @@ section{
   width: 30rem;
 }
 
-.card-width{
-  width: 69rem !important;
+.card-display{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.drink-display{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 .title{
   background: var(--black)
@@ -144,4 +155,5 @@ section{
 
 .details{
   padding-left: .5rem !important;
+  padding: .5rem;
 }

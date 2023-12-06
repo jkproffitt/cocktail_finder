@@ -2,6 +2,7 @@ const imgEl = document.getElementById('thumbnailImg');
 const drinkEl = document.getElementById('cocktail-name');
 const drinkImg = document.getElementById('drinkImg');
 const discoverCocktailRow = document.getElementById('discover-cocktail-row');
+
 //setting the search up for homepage
 const discoverForm = document.getElementById('search-for-drink');
 const searchByName = document.getElementById('drink-by-name-btn');
@@ -49,7 +50,8 @@ function buildCocktailPage(data) {
   const cpInstructions = document.getElementById('instructions');
   const cpGlass = document.getElementById('glassware');
 
-  cpDrinkType.src = data.strDrinkThumb;
+  cpDrinkType.src = data.strDrinkThumb + '/preview';
+  console.log(cpDrinkType.src);
   cpTitle.textContent = data.strDrink;
   cpGlass.textContent = data.strGlass;
 
@@ -111,7 +113,8 @@ const displayRandomCocktail = async () => {
   const randomInstructions = document.getElementById('randominstructions');
   const randomGlass = document.getElementById('randomglassware');
 
-  randomDrinkType.src = drinks[0].strDrinkThumb;
+  randomDrinkType.src = drinks[0].strDrinkThumb + '/preview';
+  console.log(randomDrinkType.src);
   randomTitle.textContent = drinks[0].strDrink;
   randomGlass.textContent = drinks[0].strGlass;
 
