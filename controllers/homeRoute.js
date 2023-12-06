@@ -6,6 +6,10 @@ console.log('homeRoute');
 
 router.get('/', async (req, res) => {
   try {
+    if (!req.session.logged_in) {
+      return res.redirect('/login');
+    }
+
     const drinks = await favoriteCocktail.findAll({
       include: [{ model: cocktail }],
     });

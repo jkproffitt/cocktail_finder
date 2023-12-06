@@ -1,4 +1,3 @@
-const imgEl = document.getElementById('thumbnailImg');
 const drinkEl = document.getElementById('cocktail-name');
 const drinkImg = document.getElementById('drinkImg');
 const discoverCocktailRow = document.getElementById('discover-cocktail-row');
@@ -24,7 +23,15 @@ const newExploreFormHandler = async (event) => {
       'style',
       'background-color: rgb(255, 245, 235); border-color: red; '
     );
-    $('#search-drink').attr('placeholder', ' Please enter a drink name');
+    $('#search-drink').attr('placeholder', ' Please enter a drink name, like "Tequila Sunrise');
+  } else {
+    const data = await getDrinkByName(drinkName);
+
+    if (data && data.length > 0) {
+      buildCocktailPage(data[0]);
+    } else {
+      alert('This drink is not available. Please try with a different drink.');
+    }
   }
 
   if (drinkName) {
@@ -63,6 +70,7 @@ function buildCocktailPage(data) {
   // cpIngredients.textContent = ingredientList;
   cpInstructions.textContent = data.strInstructions;
 }
+
 //event listener for homepage
 document
   .querySelector('.discover-form')
@@ -115,6 +123,7 @@ const displayRandomCocktail = async () => {
 
   randomDrinkType.src = drinks[0].strDrinkThumb + '/preview';
   console.log(randomDrinkType.src);
+
   randomTitle.textContent = drinks[0].strDrink;
   randomGlass.textContent = drinks[0].strGlass;
 
@@ -123,19 +132,11 @@ const displayRandomCocktail = async () => {
     entry.appendChild(document.createTextNode(ingredientList[key]));
     randomIngredients.appendChild(entry);
   }
+
   randomInstructions.textContent = drinks[0].strInstructions;
 };
 
 displayRandomCocktail();
-
-// //get random cocktail
-// const getRandomDrink = async () => {
-//   const response = await fetch(
-//     'https://www.thecocktaildb.com/api/json/v1/1/random.php'
-//   );
-//   const data = await response.json();
-//   return data.drinks;
-// };
 
 //look up cocktail by ID
 // const getDrinkById = async (id) => {
@@ -154,10 +155,6 @@ displayRandomCocktail();
 //   const data = await response.json();
 //   return data.ingredients;
 // };
-
-// getRandomDrink().then((data) => {
-//   imgEl.src = data[0].strDrinkThumb;
-// });
 
 const searchForm = document.getElementById('searchForm');
 if (searchForm) {
