@@ -1,4 +1,3 @@
-const imgEl = document.getElementById('thumbnailImg');
 const drinkEl = document.getElementById('cocktail-name');
 const drinkImg = document.getElementById('drinkImg');
 
@@ -59,6 +58,7 @@ function buildCocktailPage(data) {
   // cpIngredients.textContent = ingredientList;
   cpInstructions.textContent = data.strInstructions;
 }
+
 //event listener for homepage
 document
   .querySelector('.discover-form')
@@ -90,6 +90,46 @@ const getRandomDrink = async () => {
   return data.drinks;
 };
 
+const displayRandomCocktail = async () => {
+  const drinks = await getRandomDrink();
+
+  const ingredientKeys = Object.keys(drinks[0])
+    .filter((key) => key.includes('Ingredient'))
+    .reduce((obj, key) => {
+      obj[key] = drinks[0][key];
+      return obj;
+    }, {});
+
+  console.log(ingredientKeys);
+
+  const ingredientList = Object.fromEntries(
+    Object.entries(ingredientKeys).filter(([_, v]) => v != null)
+  );
+
+  console.log(ingredientList);
+
+  const randomTitle = document.getElementById('randomtitle');
+  const randomDrinkType = document.getElementById('randomdrinkType');
+  const randomIngredients = document.getElementById('randomingredients');
+  const randomInstructions = document.getElementById('randominstructions');
+  const randomGlass = document.getElementById('randomglassware');
+  
+  randomDrinkType.src = drinks[0].strDrinkThumb;
+  randomTitle.textContent = drinks[0].strDrink;
+  randomGlass.textContent = drinks[0].strGlass;
+
+  for (key in ingredientList) {
+    var entry = document.createElement('li');
+    entry.appendChild(document.createTextNode(ingredientList[key]));
+    randomIngredients.appendChild(entry);
+    console.log(key + ' ' + ingredientList[key]);
+  }
+
+  randomInstructions.textContent = drinks[0].strInstructions;
+};
+
+displayRandomCocktail();
+
 //look up cocktail by ID
 // const getDrinkById = async (id) => {
 //   const response = await fetch(
@@ -107,10 +147,6 @@ const getRandomDrink = async () => {
 //   const data = await response.json();
 //   return data.ingredients;
 // };
-
-getRandomDrink().then((data) => {
-  imgEl.src = data[0].strDrinkThumb;
-});
 
 const searchForm = document.getElementById('searchForm');
 if (searchForm) {

@@ -62,9 +62,27 @@
   </div>
 </section>
 
-<section class="random-drink"> Drink of the Day 
-<img id="thumbnailImg" src="">
+<section class="random-drink"> 
+  <div>
+    <h1> Drink of the Day</h1>
+    <img id="randomdrinkType" src="">
+    <h1 id="randomtitle">
+    </h1>
+    <div class="card"> 
+      <h2>Ingredients: </h2>
+      <span class="card-content" id="randomingredients"></span>
+    </div>
+    <div class="card"> 
+      <h2>How to make: </h2>
+      <span class="card-content" id="randominstructions"></span>
+    </div>
+    <div class="card">
+      <h2>Best Served in: </h2>
+      <span class="card-content" id="randomglassware"></span>
+    </div>
+  </div>
 </section>
+
 <section class="favorited-drinks" >
   <span>Favorited Drinks</span>
 {{!-- For each drink in the array of drink objects, the following <div> will be rendered. --}}
