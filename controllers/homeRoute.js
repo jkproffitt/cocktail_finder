@@ -2,8 +2,6 @@ const router = require('express').Router();
 const { User, cocktail, favoriteCocktail } = require('../models');
 const auth = require('../utils/auth');
 
-console.log('homeRoute');
-
 router.get('/', async (req, res) => {
   try {
     if (!req.session.logged_in) {
@@ -13,10 +11,9 @@ router.get('/', async (req, res) => {
     const drinks = await favoriteCocktail.findAll({
       include: [{ model: cocktail }],
     });
-    console.log(drinks);
+
     const drink = drinks.map((cocktail) => cocktail.get({ plain: true }));
-    console.log(drink);
-    //  const con = console.log(posts)
+
     if (!req.session.logged_in) {
       res.render('login');
     } else {
@@ -25,8 +22,6 @@ router.get('/', async (req, res) => {
         logged_in: req.session.logged_in,
       });
     }
-
-    console.log(req.session.logged_in);
   } catch (err) {
     console.log(err);
     res.status(500).json(err);

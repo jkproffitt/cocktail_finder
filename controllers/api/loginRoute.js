@@ -17,6 +17,7 @@ router.post('/', async (req, res) => {
     }
 
     // Now verify the password the user has put in and check in the database if this password coincides with the username
+    console.log(req.body.password, 'issue is in userCheckpassword');
     const validPassword = await userCheck.checkPw(req.body.password);
 
     // If the password doesn't exist, then send a error message of wrong password and have them retry.

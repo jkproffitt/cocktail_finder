@@ -7,12 +7,6 @@ const discoverForm = document.getElementById('search-for-drink');
 const searchByName = document.getElementById('drink-by-name-btn');
 const searchInput = document.getElementById('search-drink');
 
-if (!searchInput.value.trim()) {
-  console.log('no  drink search');
-} else {
-  console.log('drink search');
-}
-
 const newDrinkSearch = async (event) => {
   event.preventDefault();
 
@@ -65,7 +59,6 @@ function buildCocktailPage(data) {
   const discoverGlass = document.getElementById('glassware');
 
   discoverDrinkType.src = data.strDrinkThumb + '/preview';
-  console.log(discoverDrinkType.src);
   discoverTitle.textContent = data.strDrink;
   discoverGlass.textContent = data.strGlass;
   discoverIngredients.replaceChildren();
@@ -121,7 +114,6 @@ const displayRandomDrink = async () => {
   const randomGlass = document.getElementById('randomglassware');
 
   randomDrinkType.src = random[0].strDrinkThumb + '/preview';
-  console.log(randomDrinkType.src);
 
   randomTitle.textContent = random[0].strDrink;
   randomGlass.textContent = random[0].strGlass;
