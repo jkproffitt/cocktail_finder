@@ -134,6 +134,9 @@ section{
   height: fit-content;
   width: 30rem;
 }
+.card-width{
+  width: 60ren !important;
+}
 
 .card-display{
   display: flex;
