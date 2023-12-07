@@ -16,19 +16,6 @@ FavoriteCocktail.belongsTo(Cocktail, {
   foreignKey: 'cocktail_id',
 });
 
-// FavoriteCocktail.belongsToMany(User, {
-//   through: {
-//     model: Cocktail,
-//     unique: false,
-//   },
-//   as: 'cocktails',
-// });
-
-// cocktail.hasMany(userFavoritedCocktail, {
-//   foreignKey: 'cocktail_id',
-//   onDelete: 'CASCADE',
-// });
-
 module.exports = {
   user: User,
   cocktail: Cocktail,

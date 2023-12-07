@@ -17,13 +17,13 @@ router.post('/', async (req, res) => {
     }
 
     // Now verify the password the user has put in and check in the database if this password coincides with the username
-    // const validPassword = await userCheck.checkPw(req.body.password);
+    const validPassword = await userCheck.checkPw(req.body.password);
 
-    // // If the password doesn't exist, then send a error message of wrong password and have them retry.
-    // if (!validPassword) {
-    //   res.status(401).json({ message: 'Incorrect password, please try again' });
-    //   return;
-    // }
+    // If the password doesn't exist, then send a error message of wrong password and have them retry.
+    if (!validPassword) {
+      res.status(401).json({ message: 'Incorrect password, please try again' });
+      return;
+    }
 
     // Session variables based on the current logged in user
     req.session.save(() => {

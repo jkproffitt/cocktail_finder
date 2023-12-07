@@ -68,16 +68,10 @@ function buildCocktailPage(data) {
   console.log(discoverDrinkType.src);
   discoverTitle.textContent = data.strDrink;
   discoverGlass.textContent = data.strGlass;
-
-  // if (cpIngredients.hasChildNodes()) {
-  //   cpIngredients.removeChild();
-  // }
   discoverIngredients.replaceChildren();
 
-  //TODO potentially not append
   for (key in ingredientList) {
     var entry = document.createElement('li');
-    // entry.appendChild(document.createTextNode(ingredientList[key]));
     entry.textContent = ingredientList[key];
     discoverIngredients.appendChild(entry);
   }
@@ -131,7 +125,7 @@ const displayRandomDrink = async () => {
 
   randomTitle.textContent = random[0].strDrink;
   randomGlass.textContent = random[0].strGlass;
-  //TODO
+
   for (key in ingredientList) {
     var entry = document.createElement('li');
     entry.appendChild(document.createTextNode(ingredientList[key]));
@@ -143,24 +137,6 @@ const displayRandomDrink = async () => {
 
 displayRandomDrink();
 
-//look up cocktail by ID
-// const getDrinkById = async (id) => {
-//   const response = await fetch(
-//     `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`
-//   );
-//   const data = await response.json();
-//   return data.drinks;
-// };
-
-//search for ingredient by name
-// const getIngredientByName = async (name) => {
-//   const response = await fetch(
-//     `https://www.thecocktaildb.com/api/json/v1/1/search.php?i=${name}`
-//   );
-//   const data = await response.json();
-//   return data.ingredients;
-// };
-
 const searchForm = document.getElementById('searchForm');
 if (searchForm) {
   searchForm.addEventListener('submit', async (event) => {
@@ -169,36 +145,9 @@ if (searchForm) {
     const searchTerm = searchInput.value.trim();
 
     if (searchTerm) {
-      // Redirect to cocktailDisplay page with the searched cocktail name
       window.location.href = `/cocktailDisplay?name=${encodeURIComponent(
         searchTerm
       )}`;
     }
   });
 }
-
-// const displayCocktailDetails = async (cocktailName) => {
-//   const drinks = await getDrinkByName(cocktailName);
-//   if (drinks && drinks.length > 0) {
-//     const cocktail = drinks[0];
-//     // Assuming ingredients are stored in strIngredient1, strIngredient2, ...
-//     const ingredients = [];
-//     for (let i = 1; i <= 15; i++) {
-//       const ingredient = cocktail[`strIngredient${i}`];
-//       if (ingredient) {
-//         ingredients.push(ingredient);
-//       } else {
-//         break;
-//       }
-//     }
-
-//     // Redirect to cocktailDisplay page with details
-//     window.location.href = `/cocktailDisplay?name=${encodeURIComponent(
-//       cocktailName
-//     )}&ingredients=${encodeURIComponent(
-//       JSON.stringify(ingredients)
-//     )}&instructions=${encodeURIComponent(
-//       cocktail.strInstructions
-//     )}&image=${encodeURIComponent(cocktail.strDrinkThumb)}`;
-//   }
-// };
