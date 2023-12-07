@@ -30,7 +30,7 @@ In this project we were able to use our skills learned from our first 12 weeks t
 
 This is the github repo location: [cocktail finder](https://github.com/jkproffitt/cocktail_finder)
 
-This following is a link to the deployed application:[Deployed Cocktail Finder project](https://)
+This following is a link to the deployed application:[Deployed Cocktail Finder project](https://arcane-river-47241-cbacf7f337f2.herokuapp.com/)
 
 ## Contributors 
 Jessica, Peter, and Sel
