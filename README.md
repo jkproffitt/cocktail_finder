@@ -28,7 +28,7 @@ In this project we were able to use our skills learned from our first 12 weeks t
 
 ## Links and Mockups
 
-This is the github repo location: [cocktail finder](https://github.com/peterkim1025/cocktail_finder)
+This is the github repo location: [cocktail finder](https://github.com/jkproffitt/cocktail_finder)
 
 This following is a link to the deployed application:[Deployed Cocktail Finder project](https://)
 
