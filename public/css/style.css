@@ -16,11 +16,12 @@
   background: white;
   padding: 0 1rem;
 }
-h1{
-  font-size: 2em;
+
+h2{
+  font-size: 2rem;
   margin: 0.67em 0;
 }
-h2 {
+h3 {
   font-size: 1.5rem;
   margin: .5em 0;
   padding: .5rem;
@@ -150,12 +151,16 @@ section{
 .title{
   background: var(--black)
 }
-
 .details{
   padding-left: .5rem !important;
   padding: .5rem;
 }
-
 .drink-content{
-  max-width: 69rem;
+  width: 69rem;
+}
+.section-color-random {
+  background: var(--tealOpaque);
+}
+.title-style{
+  font-size: 2rem;
 }
