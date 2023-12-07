@@ -134,3 +134,29 @@ section{
   height: fit-content;
   width: 30rem;
 }
+.card-width{
+  width: 60ren !important;
+}
+
+.card-display{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.drink-display{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.title{
+  background: var(--black)
+}
+
+.details{
+  padding-left: .5rem !important;
+  padding: .5rem;
+}

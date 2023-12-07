@@ -1,12 +1,19 @@
 const drinkEl = document.getElementById('cocktail-name');
 const drinkImg = document.getElementById('drinkImg');
+const discoverCocktailRow = document.getElementById('discover-cocktail-row');
 
 //setting the search up for homepage
 const discoverForm = document.getElementById('search-for-drink');
 const searchByName = document.getElementById('drink-by-name-btn');
 const searchInput = document.getElementById('search-drink');
 
-const newExploreFormHandler = async (event) => {
+if (!searchInput.value.trim()) {
+  console.log('no  drink search');
+} else {
+  console.log('drink search');
+}
+
+const newDrinkSearch = async (event) => {
   event.preventDefault();
 
   const drinkName = document.querySelector('#search-drink').value.trim();
@@ -16,13 +23,20 @@ const newExploreFormHandler = async (event) => {
       'style',
       'background-color: rgb(255, 245, 235); border-color: red; '
     );
-    $('#search-drink').attr('placeholder', ' Please enter a drink name, like "Tequila Sunrise');
+    $('#search-drink').attr(
+      'placeholder',
+      ' Please enter a drink name, like "Tequila Sunrise'
+    );
   } else {
     const data = await getDrinkByName(drinkName);
-
     if (data && data.length > 0) {
+      discoverCocktailRow.hidden = false;
       buildCocktailPage(data[0]);
     } else {
+      $('#search-drink').attr(
+        'style',
+        'background-color: rgb(255, 245, 235); border-color: red; '
+      );
       alert('This drink is not available. Please try with a different drink.');
     }
   }
@@ -34,46 +48,50 @@ const newExploreFormHandler = async (event) => {
 };
 
 function buildCocktailPage(data) {
-  console.log('This is the builder function, here is the related data: ', data);
   ingredientKeys = Object.keys(data)
     .filter((key) => key.includes('Ingredient'))
     .reduce((obj, key) => {
       obj[key] = data[key];
       return obj;
     }, {});
-  console.log(ingredientKeys);
   let ingredientList = Object.fromEntries(
     Object.entries(ingredientKeys).filter(([_, v]) => v != null)
   );
-  console.log(ingredientList);
-  const cpTitle = document.getElementById('title');
-  const cpDrinkType = document.getElementById('drinkType');
-  const cpIngredients = document.getElementById('ingredients');
-  const cpInstructions = document.getElementById('instructions');
-  const cpGlass = document.getElementById('glassware');
 
-  cpDrinkType.src = data.strDrinkThumb;
-  cpTitle.textContent = data.strDrink;
-  cpGlass.textContent = data.strGlass;
+  const discoverTitle = document.getElementById('title');
+  const discoverDrinkType = document.getElementById('drinkType');
+  const discoverIngredients = document.getElementById('ingredients');
+  const discoverInstructions = document.getElementById('instructions');
+  const discoverGlass = document.getElementById('glassware');
 
+  discoverDrinkType.src = data.strDrinkThumb + '/preview';
+  console.log(discoverDrinkType.src);
+  discoverTitle.textContent = data.strDrink;
+  discoverGlass.textContent = data.strGlass;
+
+  // if (cpIngredients.hasChildNodes()) {
+  //   cpIngredients.removeChild();
+  // }
+  discoverIngredients.replaceChildren();
+
+  //TODO potentially not append
   for (key in ingredientList) {
     var entry = document.createElement('li');
-    entry.appendChild(document.createTextNode(ingredientList[key]));
-    cpIngredients.appendChild(entry);
-    console.log(key + ' ' + ingredientList[key]);
+    // entry.appendChild(document.createTextNode(ingredientList[key]));
+    entry.textContent = ingredientList[key];
+    discoverIngredients.appendChild(entry);
   }
-
-  // cpIngredients.textContent = ingredientList;
-  cpInstructions.textContent = data.strInstructions;
+  discoverInstructions.textContent = data.strInstructions;
 }
 
 //event listener for homepage
 document
   .querySelector('.discover-form')
-  .addEventListener('submit', newExploreFormHandler);
+  .addEventListener('submit', newDrinkSearch);
 
 //search cocktail by name
 const getDrinkByName = async (name) => {
+  // discoverCocktailRow.hidden = false;
   const response = await fetch(
     `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${name}`
   );
@@ -81,15 +99,6 @@ const getDrinkByName = async (name) => {
   return data.drinks;
 };
 
-if (!drinkEl) {
-  console.log('no favorite drinks');
-} else {
-  getDrinkByName(drinkEl.innerHTML).then((data) => {
-    drinkImg.src = data[0].strDrinkThumb;
-  });
-}
-
-//get random cocktail
 const getRandomDrink = async () => {
   const response = await fetch(
     'https://www.thecocktaildb.com/api/json/v1/1/random.php'
@@ -98,45 +107,41 @@ const getRandomDrink = async () => {
   return data.drinks;
 };
 
-const displayRandomCocktail = async () => {
-  const drinks = await getRandomDrink();
-
-  const ingredientKeys = Object.keys(drinks[0])
+const displayRandomDrink = async () => {
+  const random = await getRandomDrink();
+  const ingredientKeys = Object.keys(random[0])
     .filter((key) => key.includes('Ingredient'))
     .reduce((obj, key) => {
-      obj[key] = drinks[0][key];
+      obj[key] = random[0][key];
       return obj;
     }, {});
-
-  console.log(ingredientKeys);
 
   const ingredientList = Object.fromEntries(
     Object.entries(ingredientKeys).filter(([_, v]) => v != null)
   );
-
-  console.log(ingredientList);
 
   const randomTitle = document.getElementById('randomtitle');
   const randomDrinkType = document.getElementById('randomdrinkType');
   const randomIngredients = document.getElementById('randomingredients');
   const randomInstructions = document.getElementById('randominstructions');
   const randomGlass = document.getElementById('randomglassware');
-  
-  randomDrinkType.src = drinks[0].strDrinkThumb;
-  randomTitle.textContent = drinks[0].strDrink;
-  randomGlass.textContent = drinks[0].strGlass;
 
+  randomDrinkType.src = random[0].strDrinkThumb + '/preview';
+  console.log(randomDrinkType.src);
+
+  randomTitle.textContent = random[0].strDrink;
+  randomGlass.textContent = random[0].strGlass;
+  //TODO
   for (key in ingredientList) {
     var entry = document.createElement('li');
     entry.appendChild(document.createTextNode(ingredientList[key]));
     randomIngredients.appendChild(entry);
-    console.log(key + ' ' + ingredientList[key]);
   }
 
-  randomInstructions.textContent = drinks[0].strInstructions;
+  randomInstructions.textContent = random[0].strInstructions;
 };
 
-displayRandomCocktail();
+displayRandomDrink();
 
 //look up cocktail by ID
 // const getDrinkById = async (id) => {

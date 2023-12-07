@@ -17,10 +17,15 @@ router.get('/', async (req, res) => {
     const drink = drinks.map((cocktail) => cocktail.get({ plain: true }));
     console.log(drink);
     //  const con = console.log(posts)
-    res.render('home', {
-      drink,
-      logged_in: req.session.logged_in,
-    });
+    if (!req.session.logged_in) {
+      res.render('login');
+    } else {
+      res.render('home', {
+        drink,
+        logged_in: req.session.logged_in,
+      });
+    }
+
     console.log(req.session.logged_in);
   } catch (err) {
     console.log(err);
