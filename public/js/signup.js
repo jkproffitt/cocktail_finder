@@ -51,9 +51,7 @@ document.querySelector('#submit-btn').addEventListener('click', signUpHandler);
 const ageHandler = async (e) => {
   e.preventDefault();
   const dob = document.querySelector('#birthdate').value.trim();
-  console.log(dob);
   var age = getAge(dob);
-  console.log(age);
   if (dob == '' || age < 21) {
     $('#birthdate').attr(
       'style',

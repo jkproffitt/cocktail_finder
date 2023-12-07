@@ -4,7 +4,6 @@ const auth = require('../utils/auth');
 
 //get user session
 router.get('/', async (req, res) => {
-  console.log(req.session);
   try {
     const user = await Post.findAll({
       where: {

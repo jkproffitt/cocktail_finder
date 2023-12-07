@@ -16,11 +16,12 @@
   background: white;
   padding: 0 1rem;
 }
-h1{
-  font-size: 2em;
+
+h2{
+  font-size: 2rem;
   margin: 0.67em 0;
 }
-h2 {
+h3 {
   font-size: 1.5rem;
   margin: .5em 0;
   padding: .5rem;
@@ -134,29 +135,33 @@ section{
   height: fit-content;
   width: 30rem;
 }
-.card-width{
-  width: 60ren !important;
-}
 
-.card-display{
+.random-display{
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
 }
-.drink-display{
+.discover-display{
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
 }
 .title{
   background: var(--black)
 }
-
 .details{
   padding-left: .5rem !important;
   padding: .5rem;
+}
+.drink-content{
+  width: 69rem;
+}
+.section-color-random {
+  background: var(--tealOpaque);
+}
+.title-style{
+  font-size: 2rem;
+  font-style: italic;
 }
